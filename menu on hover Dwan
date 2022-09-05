@@ -1,0 +1,34 @@
+Dawn theme to display menu on hover add bilow script under header,liquid file
+
+<script>
+    let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
+    console.log(items)
+    items.forEach(item => {
+      item.addEventListener("mouseover", () => {
+        item.setAttribute("open", true);
+        item.querySelector("ul").addEventListener("mouseleave", () => {
+          item.removeAttribute("open");
+        });
+      item.addEventListener("mouseleave", () => {
+        item.removeAttribute("open");
+      });
+    });
+    
+    });
+  </script>
+  
+  and also do this:https://community.shopify.com/c/shopify-design/dawn-theme-navigation/td-p/1354039
+ 
+ this
+ <summary class="header__menu-item list-menu__item link">
+     <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+              {% render 'icon-caret' %}
+</summary>
+replace to
+<summary class="header__menu-item list-menu__item link">
+   <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}><a href="{{ link.url }}" 
+   class="header__menu-item header__menu-item ">{{ link.title | escape }}</a></span>
+  {% render 'icon-caret' %}
+</summary>
+  
+  
