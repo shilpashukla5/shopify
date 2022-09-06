@@ -1,0 +1,19 @@
+ {% for block in section.blocks %}
+                              {% assign count = count | plus: 1 %}
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne_{{ count }}">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne_{{ count }}" aria-expanded="true"
+                                            aria-controls="collapseOne_{{ count }}">
+                                           {{ block.settings.question }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne_{{ count }}" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne_{{ count }}" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p>{{ block.settings.answer }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                              {% endfor %}
