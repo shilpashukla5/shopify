@@ -1,0 +1,227 @@
+<!-- slider section -->
+
+    <section class="banner_sect">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_sec_inner">
+                        <div class="banner_txt">
+                            <h1>{{ section.settings.heading }}</h1>
+                        </div>
+                        <div class="banner_img">
+                            <img src="{{ section.settings.banner_img | img_url: 'large' }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about_page p_y">
+        <div class="container-fluid g-0">
+            <div class="about_pg_inner">
+              {% for block in section.blocks %}
+                {%- if block.type == 'img_with_text' -%}
+            
+                <div class="about_pg_bx">
+                    <div class="ab_img">
+                        <img src="{{ block.settings.text_img | img_url: 'large' }}" alt="img">
+                    </div>
+                    <div class="ab_text">
+                        <h4>{{ block.settings.title }}</h4>
+                        <h2>{{ block.settings.heading }}</h2>
+                        <p>{{ block.settings.description }}</p>
+                    </div>
+                </div>
+                  
+                {%endif%}
+              {%endfor%}
+              
+            </div>
+        </div>
+    </section>
+
+    <section class="about_our_team p_y">
+        <div class="container">
+            <div class="heading_title">
+                <h1>{{ section.settings.meet_heading }}</h1>
+                {{ section.settings.meet_description }}
+            </div>
+            <div class="about_our_team_inner">
+                <div class="row">
+                   {% for block in section.blocks %}
+                      {%- if block.type == 'meet_the_team' -%}
+                        
+                    <div class="col-sm-6 col-lg-3 mb-5">
+                        <div class="about_our_team_box">
+                            <div class="about_our_team_img_bdr">
+                                <div class="about_our_team_img">
+                                    <img src="{{ block.settings.team_img | img_url: 'large' }}" alt="img">
+                                </div>
+                            </div>
+                            <div class="about_our_team_txt">
+                                <h5>{{ block.settings.name }}</h5>
+                                <div class="about_our_team_link">
+                                    <ul>
+                                        <li><a href="{{ block.settings.fb_url }}"><img src="{{ block.settings.fb_img | img_url: 'medium' }}" alt="img"></a></li>
+                                        <li><a href="{{ block.settings.insta_url }}"><img src="{{ block.settings.insta_img | img_url: 'medium' }}" alt="img"></a></li>
+                                        <li><a href="{{ block.settings.twitter_url }}"><img src="{{ block.settings.twitter_img | img_url: 'medium' }}" alt="img"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                  {%endfor%}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about_btm p_y">
+        <div class="container-fluid g-0">
+            <div class="about_btm_inner">
+
+
+                <div class="about_btm_img">
+                    <img src="{{ section.settings.after_meet_img | img_url: 'large' }}" alt="img">
+                </div>
+
+                <div class="about_btm_wrapp">
+                    <div class="about_btm_txt">
+                        <h5>{{ section.settings.after_meet_heading }}</h5>
+                        <p>{{ section.settings.after_meet_description }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% schema %}
+  {
+    "name": "About Us Page",
+    "settings": [
+      {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+      },
+       {
+      "type": "image_picker",
+      "id": "banner_img",
+      "label": "Image"
+      },
+      {
+      "type": "text",
+      "id": "meet_heading",
+      "label": "Meet The Team Heading"
+      },
+      {
+      "type": "richtext",
+      "id": "meet_description",
+      "label": "Meet The Team Description"
+      },
+     {
+      "type": "image_picker",
+      "id": "after_meet_img",
+      "label": "After Meet Image"
+      },
+      {
+      "type": "text",
+      "id": "after_meet_heading",
+      "label": "After Meet Heading"
+      },
+      {
+      "type": "richtext",
+      "id": "after_meet_description",
+      "label": "After Meet Description"
+      }
+    ],
+    "max_blocks": 15,
+      "blocks": [
+         {
+           "name": "Image with text",
+           "type": "img_with_text",
+           "settings": [
+              {
+              "type": "image_picker",
+              "id": "text_img",
+              "label": "Image"
+              },
+              {
+              "id": "title",
+              "type": "text",
+              "label": "Title"
+              },
+             {
+              "id": "heading",
+              "type": "text",
+              "label": "Heading"
+              },
+              {
+              "id": "description",
+              "type": "richtext",
+              "label": "Description"
+              }
+           ]
+         },
+           {
+           "name": "Meet The Team",
+           "type": "meet_the_team",
+           "settings": [
+              {
+              "type": "image_picker",
+              "id": "team_img",
+              "label": "Image"
+              },
+              {
+              "id": "name",
+              "type": "text",
+              "label": "Name"
+              },
+             {
+              "id": "fb_img",
+              "type": "image_picker",
+              "label": "Facebook Image"
+              },
+              {
+              "id": "fb_url",
+              "type": "url",
+              "label": "Facebook Url"
+              },
+             {
+              "id": "insta_img",
+              "type": "image_picker",
+              "label": "Insta Image"
+              },
+              {
+              "id": "insta_url",
+              "type": "url",
+              "label": "Insta Url"
+              },
+             {
+              "id": "twitter_img",
+              "type": "image_picker",
+              "label": "TWitter Image"
+              },
+              {
+              "id": "twitter_url",
+              "type": "url",
+              "label": "TWitter Url"
+              }
+           ]
+         }
+      ],
+    "presets":[
+      {
+        "name": "About Us Page"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
