@@ -1,0 +1,51 @@
+      <section class="main_catgry p_y">
+        <div class="container">
+          <div class="row">
+             {% for block in section.blocks %}
+            {%- assign collection = collections[block.settings.collection] -%}
+            <div class="col-md-6 mb-4">
+              <div class="main_catgry_card">
+                <div class="main_catgry_img">
+                  <img src="{{ collection | img_url: '450x450' }}" alt="" />
+                 
+                </div>
+                 <div class="main_catgry_txt">
+<!--                     <p>necklace</p> -->
+                    <a href="{{ collection.url }}"> 
+                      <h3>{{ collection.title }}</h3> 
+                  </a>
+                  </div>
+              </div>
+            </div>
+             {% endfor %}
+
+          </div>
+        </div>
+      </section>
+{% schema %}
+  {
+    "name": "Main Browse Collections",
+    "settings": [
+     
+    ],
+  "max_blocks": 5,
+  "blocks": [
+     {
+       "name": "Collections",
+       "type": "collection",
+       "settings": [
+        {
+        "id": "collection",
+        "type": "collection",
+        "label": "Chose a collection"
+      }
+       ]
+     }
+  ],
+    "presets": [
+      {
+    "name" : "Main Browse Collections"
+  }
+    ]
+  }
+{% endschema %}
