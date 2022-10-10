@@ -1,0 +1,43 @@
+<section class="collect_prd rlated_collection_prd p_y">
+        <div class="container">
+            <div class="related_collect_prd">
+                <div class="related_collect_title">
+                    <h1>Related Design</h1>
+                </div>
+                <div class="flex_arrow">
+                    <div class="slide_controls_tw left_arrow">
+                        <div class="prev slick-arrow" aria-disabled="false" style=""> <img alt=""
+                                src="https://cdn.shopify.com/s/files/1/0607/6478/2744/t/4/assets/left_Arr.png?v=1664271540">
+                        </div>
+                    </div>
+                    <div class="slide_controls_tw right_arr">
+                        <div class="next slick-arrow" aria-disabled="false" style=""> <img alt=""
+                                src="https://cdn.shopify.com/s/files/1/0607/6478/2744/t/4/assets/right_Arr.png?v=1664271488">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                 {% for product in collections.all.products limit:12 %}
+
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-5">
+                    <div class="collect_pd_box">
+                        <div class="collect_pd_img">
+                            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="img">
+                        </div>
+                        <div class="collect_pd_descri">
+                            <h3>{{ product.title }}</h3>
+                            <div class="collect_pd_pp">
+                                <p>{{ product.price | money }}</p>
+                            </div>
+                            <div class="collect_pd_btn">
+                                <a href="{{ product.url | within: collection }}">Buy Now <img src="https://cdn.shopify.com/s/files/1/0607/6478/2744/t/4/assets/product_arrow.png?v=1663908799" alt="img"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+            
+            </div>
+        </div>
+    </section>
